@@ -1,23 +1,30 @@
 $(document).ready(function() {
 
-	function set_weather_picture(weather){
-		if(weather=="sunny"){
-			console.log("weather is sunny");
-			$('img.weather-image').attr('src','abc');
+		var hash = {
+		'sunny':['sun', 'bright', 'clear', 'sunny', 'clear skies'],
+		'cloudy':['overcast','cloudy','foggy','gray','grey', 'partly cloudy', 'mostly cloudy'],
+		'rainy':['rain', 'wet', 'pouring', 'downpour', 'drizzle', 'shower', 'showers', 'scattered'],
+		'snowy': ['snow', 'sleet', 'hail', 'ice', 'flurries'],
+		'fair':[]
 		}
 		
-		else if{
-			console.log("weather is rainy");
-			$('img.weather-image').attr('src','abc');
-		}
-		else{
-			console.log("weather is not sunny");
-			$('img.weather-image').attr('src','def');
+	function set_weather_picture(weather){
+		console.log(weather);
+		if (hash['sunny'].indexOf(weather.toLowerCase()) >= 0) {
+			$('img.weather-image').attr('src','./images/sunny.png');
+		} else if (hash['rainy'].indexOf(weather.toLowerCase()) >= 0) {
+			$('img.weather-image').attr('src','./images/rainy.png');
+		} else if (hash['cloudy'].indexOf(weather.toLowerCase()) >= 0) {
+			$('img.weather-image').attr('src','./images/cloudy.png');
+		} else if (hash['snowy'].indexOf(weather.toLowerCase()) >= 0) {
+			$('img.weather-image').attr('src','./images/snowy.png');
+		} else {
+			$('img.weather-image').attr('src','./images/snowy.png');
 		}
 	};
 		
   $.simpleWeather({
-    location: 'Boston, MA',
+    location: 'Austin, TX',
     woeid: '',
     unit: 'f',
     success: function(weather) {
