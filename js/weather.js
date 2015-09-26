@@ -19,12 +19,12 @@ $(document).ready(function() {
 		} else if (hash['snowy'].indexOf(weather.toLowerCase()) >= 0) {
 			$('img.weather-image').attr('src','./images/snowy.png');
 		} else {
-			$('img.weather-image').attr('src','./images/snowy.png');
+			$('img.weather-image').attr('src','./images/general.png');
 		}
 	};
 		
   $.simpleWeather({
-    location: 'Austin, TX',
+    location: 'Moscow, RU',
     woeid: '',
     unit: 'f',
     success: function(weather) {
